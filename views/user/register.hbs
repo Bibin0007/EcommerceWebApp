@@ -1,0 +1,187 @@
+<section
+  style="background-color: #14161c;
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(356.13, 0%, 28.999999999999996%) 0, transparent 59%), 
+        radial-gradient(at 82% 65%, hsl(218.18, 14.000000000000002%, 31%);"
+>
+  <section class="vh-150">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div
+            class="card"
+            style="border-radius: 1rem;  backdrop-filter: blur(6px) saturate(117%);
+    -webkit-backdrop-filter: blur(6px) saturate(117%);
+    background-color: rgba(17, 25, 40, 0.48);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125); color: #e5e1e1;"
+          >
+            <div class="card-body p-5 text-center">
+
+              <div class="mb-md-5 mt-md-4 pb-5">
+
+                <h2 class="fw-bold mb-2 text-uppercase">welcome to</h2>
+
+                <h3 class="fw-bold mb-2 text">upStyle</h3>
+
+                <form action="/register" method="post">
+
+                  <p class="text-white-50 mb-5">{{message}}</p>
+
+                  <div class="form-outline form-white mb-4">
+                    <input
+                      type="text"
+                      name="username"
+                      style="color: #ff0000; background: transparent; border:solid #1c0606; "
+                      id="username"
+                      class="form-control form-control-lg"
+                      onkeyup="validateName()"
+                    />
+                    <label class="form-label" for="typeEmailX">Name</label>
+                    <small id="name-error" class="text-danger"></small>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input
+                      type="email"
+                      name="email"
+                      style="color: #e5e1e1; background: transparent; border:solid #112c43; "
+                      id="email"
+                      class="form-control form-control-lg"
+                      onkeyup="validateEmail()"
+                    />
+                    <label class="form-label" for="typeEmailX">Email</label>
+                    <small id="email-error" class="text-danger"></small>
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <input
+                      type="number"
+                      name="mobile"
+                      style="color: #e5e1e1; background: transparent; border:solid #112c43; "
+                      id="mobile"
+                      class="form-control form-control-lg"
+                      onkeyup="validateMobile()"
+                    />
+                    <label class="form-label" for="typeEmailX">Phone number</label>
+                    <small id="mobile-error" class="text-danger"></small>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input
+                      type="password"
+                      name="password"
+                      style="color: #e5e1e1; background: transparent; border:solid #112c43; "
+                      id="typeEmailX"
+                      class="form-control form-control-lg"
+                    />
+                    <label
+                      class="form-label"
+                      for="typePasswordX"
+                    >Password</label>
+                  </div>
+
+                  <div class="form-outline form-white mb-4">
+                    <input
+                      type="password"
+                      style="color: #e5e1e1; background: transparent; border:solid #112c43; "
+                      id="typeEmailX"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="typePasswordX">Confirm
+                      Password</label>
+                  </div>
+
+                  <p class="small mb-5 pb-lg-2"><a
+                      class="text-white-50"
+                      href="/login"
+                    >Already have an account ?</a></p>
+
+                  <button
+                    class="btn btn-outline-light btn-lg px-5"
+                    type="submit"
+                    onclick="return submitForm()"
+                  >Sign up</button>
+                  <p id="submit-error" class="text-danger"></p>
+                </form>
+              
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+     var nameError=document.getElementById('name-error')
+     var emailError=document.getElementById('email-error');
+     var mobileError=document.getElementById('mobile-error')
+     var submitError=document.getElementById('submit-error');
+function validateName()
+{
+    var name = document.getElementById('username').value
+    if(name.length ==0){
+        nameError.innerHTML='Name is required';
+        return false;
+    }
+    
+    if(!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)){
+
+    nameError.innerHTML='Write Full name';
+    return false;
+}
+    nameError.innerHTML="";
+
+    return true;
+}
+function validateEmail(){
+    var email=document.getElementById('email').value;
+
+
+    if(email.length==0)
+    {
+        emailError.innerHTML='Email is required';
+        return false;
+    }
+
+    if(!email.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)){
+
+        emailError.innerHTML='Email Invalid';
+        return false;
+    }
+    
+    emailError.innerHTML="";
+    
+    
+    return true;
+  }
+  function validateMobile(){
+    var mobile = document.getElementById('mobile').value
+
+    if(mobile.length==0)
+    {
+        mobileError.innerHTML='Number is required';
+        return false;
+
+    }
+    if(!mobile.match(/^\d{10}$/)){
+
+        mobileError.innerHTML='Number Invalid';
+        return false;
+    }
+    mobileError.innerHTML="";
+    
+    
+    return true;
+
+
+  }
+  function submitForm() {
+    if((!validateName()) || !validateEmail() || !validateMobile()){
+    submitError.innerHTML='please fill all fields'
+    return false;
+}
+}
+
+  </script>
+</section>
